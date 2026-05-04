@@ -1,0 +1,177 @@
+:root {
+  /* cores de fundo */
+  --bg:           #080810;
+  --surface:      #0f0f1a;
+  --surface2:     #16162a;
+  --surface3:     #1e1e35;
+
+  /* cores de destaque e accents */
+  --accent-h:     262;
+  --accent-s:     82%;
+  --accent-l:     58%;
+  --accent:       hsl(var(--accent-h) var(--accent-s) var(--accent-l));
+  --accent-glow:  hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 0.3);
+  --accent2:      #06b6d4;
+
+  /* bordas */
+  --border:       rgb(255 255 255 / 0.07);
+  --border-hover: hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 0.6);
+
+  /* tipografia */
+  --text:         #e8e8f0;
+  --text-dim:     #9898b8;
+  --text-muted:   #6b6b8a;
+  --font:         'Segoe UI', system-ui, sans-serif;
+
+  /* layout */
+  --radius:       14px;
+  --gap:          63px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  scroll-behavior: smooth;
+}
+
+/* ── Header ── */
+header {
+  padding: 20px 28px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.5px;
+}
+
+/* ── Main ── */
+main {
+  padding: 24px 28px;
+}
+
+/* ── Barra de busca ── */
+.search-wrap {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.search-wrap svg {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  color: var(--text-muted);
+}
+
+#campoBusca {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px 0 46px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 14px;
+  font-family: var(--font);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#campoBusca:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+#campoBusca::placeholder {
+  color: var(--text-muted);
+}
+
+/* ── Grid de cards ── */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(6, 160px);
+  gap: var(--gap);
+}
+
+/* ── Card ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  width: 180px; /* largura fixa */
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-hover);
+  box-shadow: 0 8px 32px var(--accent-glow);
+}
+
+.card img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.card:hover img {
+  transform: scale(1.04);
+}
+
+.card-content {
+  padding: 12px 14px;
+}
+
+.card h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card p {
+  font-size: 12px;
+  color: gray;
+  margin: 4px 0;
+}
+
+.card p strong {
+  color: gray;
+  font-weight: 500;
+}
+
+/* ── Footer ── */
+footer {
+  margin-top: 40px;
+  padding: 18px 28px;
+  background: black;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}
